@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+h2 {text-align: center;}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2 class="style">Credit Card Registers</h2>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>DOB</th>
+    <th>Gender</th>
+    <th>Phone</th>
+    <th>Address</th>
+    <th>State</th>
+    <th>PIN</th>
+    <th>Occupation</th>
+    <th>Salary</th>
+    <th>Work</th>
+    <th>Institution Name</th>
+    <th>Account Number</th>
+    <th>IFSC code</th>
+    <th>Email</th>
+  </tr>
+  <% registers.forEach(function(docs){ %>
+  <tr>
+    <td><%= docs.name %></td>
+    <td><%= docs.DOB %></td>
+    <td><%= docs.gender %></td>
+    <td><%= docs.contactNumber %></td>
+    <td><%= docs.address %></td>
+    <td><%= docs.state %></td>
+    <td><%= docs.pin %></td>
+    <td><%= docs.workStatus %></td>
+    <% if(docs.workStatus == "employed" || docs.workStatus =="Business"){ %>
+    <td><%= docs.salary %></td>
+    <% } else {  %> 
+      <td> NILL</td> 
+    <% } %> 
+    <% if(docs.workStatus == "employed" || docs.workStatus =="Business"){ %>
+        <td><%= docs.occupation %></td>
+        <% } else {  %> 
+        <td> NILL</td> 
+        <% } %>
+        <% if(docs.workStatus == "Student" ){ %> 
+            <td><%= docs.institutionName %></td>
+            <% } else {  %> 
+            <td> NILL</td> 
+             <% } %>
+             <td><%= docs.accountNumber %></td>
+             <td><%= docs.IFSC_Code %></td>
+             <td><%= docs.Email %></td>
+  </tr>
+  <%});%>
+  
+</table>
+
+</body>
+</html>
